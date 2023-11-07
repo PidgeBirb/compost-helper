@@ -5,6 +5,7 @@ import com.composthelper.compostbin.CompostBinObject;
 import com.composthelper.compostbin.CompostBinOverlay;
 import com.google.inject.Provides;
 
+import javax.annotation.Nullable;
 import javax.inject.Inject;
 
 import lombok.Getter;
@@ -24,11 +25,6 @@ import net.runelite.client.ui.overlay.OverlayManager;
         name = "Compost Helper"
 )
 public class CompostHelperPlugin extends Plugin {
-    @Inject
-    private Client client;
-
-    @Inject
-    private CompostHelperConfig config;
 
     @Inject
     private OverlayManager overlayManager;
@@ -37,8 +33,8 @@ public class CompostHelperPlugin extends Plugin {
     private CompostBinOverlay overlay;
 
     @Getter
+    @Nullable
     private CompostBin visibleCompostBin;
-
 
     @Override
     protected void startUp() throws Exception {
@@ -64,16 +60,14 @@ public class CompostHelperPlugin extends Plugin {
     @Subscribe
     public void onGameObjectDespawned(GameObjectDespawned event) {
         GameObject object = event.getGameObject();
-        if (object.getId() == visibleCompostBin.getGameObject().getId()) {
+        if (visibleCompostBin != null && object.getId() == visibleCompostBin.getGameObject().getId()) {
             visibleCompostBin = null;
         }
     }
 
     @Subscribe
-    public void onGameStateChanged(GameStateChanged event)
-    {
-        if (event.getGameState() == GameState.LOADING)
-        {
+    public void onGameStateChanged(GameStateChanged event) {
+        if (event.getGameState() == GameState.LOADING) {
             visibleCompostBin = null;
         }
     }
