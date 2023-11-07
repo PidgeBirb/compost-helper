@@ -64,7 +64,7 @@ public class CompostHelperPlugin extends Plugin {
     @Subscribe
     public void onGameObjectDespawned(GameObjectDespawned event) {
         GameObject object = event.getGameObject();
-        if (object.getId() == visibleCompostBin.getGameObject().getId()) {
+        if (visibleCompostBin != null && object.getId() == visibleCompostBin.getGameObject().getId()) {
             visibleCompostBin = null;
         }
     }
