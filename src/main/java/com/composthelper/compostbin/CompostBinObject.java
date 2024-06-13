@@ -14,7 +14,8 @@ public enum CompostBinObject {
     HOSIDIUS(27112, Varbits.FARMING_4775),
     MORYTANIA(7838, Varbits.FARMING_4775),
     PRIFDDINAS(34920, Varbits.FARMING_4774),
-    FARMING_GUILD(34631, Varbits.FARMING_7912);
+    FARMING_GUILD(34631, Varbits.FARMING_7912),
+    CIVITAS(50694, Varbits.FARMING_4775);
 
     @Getter
     private int objectId;
