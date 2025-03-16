@@ -18,7 +18,7 @@ import java.awt.*;
 
 public class CompostBinOverlay extends Overlay {
 
-    private static final int MAX_DISTANCE = 2350;
+    private static final int MAX_DISTANCE = 3500;
     private static final int TEXT_HEIGHT = 11;
 
     private final Client client;
